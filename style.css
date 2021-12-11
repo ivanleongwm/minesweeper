@@ -9,7 +9,7 @@ body {
     display: flex;
     height: 566px;
     justify-content: center;
-};
+}
 
 .container {
     border: 3px solid #996633;
