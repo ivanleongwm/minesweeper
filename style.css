@@ -4,7 +4,7 @@ body {
 }
 
 .title {
-    height:100px;
+    height:50px;
 }
 
 .glassPanelMap {
@@ -23,7 +23,25 @@ body {
     width: 1120px;
 }
 
-.panel {
+
+
+.solidPanel,.breakablePanel {
+    align-items: center;
+    border: 3px outset #996633;
+    display: flex;
+    font-family: 'Gaegu', cursive;
+    font-size: 28px;
+    font-weight: 600;
+    height: 50px;
+    justify-content: center;
+    width: 50px;
+    background-image:url('glassPanel.png');
+}
+.solidPanel:hover,.breakablePanel:hover {
+    opacity:0.5;
+}
+
+.panelbroken {
     align-items: center;
     border: 3px outset #996633;
     display: flex;
