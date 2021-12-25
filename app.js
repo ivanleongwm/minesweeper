@@ -114,30 +114,30 @@ function moveTopLeft() {
 console.log(topLeftYCoordGlassGrid)
 console.log(document.querySelector('.glassPanelMap').offsetLeft)
 console.log(topLeftXCoordGlassGrid)
-//console.log(document.querySelector('#sprite-image').getBoundingClientRect().left)
 
-//moveRight()
-//moveDown()
-/*
-console.log(characterLeftPos)
-moveBottomRight()
-moveBottomRight()
-moveTopLeft()
-moveRight()
-moveBottomRight()
-moveBottomRight()
-moveBottomRight()
-moveBottomRight()
-moveBottomRight()
-moveBottomRight()
-moveBottomRight()
-moveBottomRight()
-*/
-//moveTopRight()
-//moveDown()
-//let characterLeftPos = parseInt(character.style.left)
-//console.log(characterLeftPos)
-// gameboard glass panel
+let characterXCoord = document.querySelector('#sprite-image').getBoundingClientRect().left + 28
+let characterYCoord = document.querySelector('#sprite-image').getBoundingClientRect().top + 28
+
+function getCharacterCoordinates() {
+    characterXCoord = document.querySelector('#sprite-image').getBoundingClientRect().left + 28
+    characterYCoord = document.querySelector('#sprite-image').getBoundingClientRect().top + 28
+    console.log(characterXCoord)
+    console.log(characterYCoord)
+    return [characterXCoord,characterYCoord]
+}
+
+// Create min max array of x and y coordinates of each glass panel
+let gameBoardCoordinatesArray = []
+let xMin = 170;
+let xMax = 226;
+for (let i=0; i < 20; i++) {    
+    gameBoardCoordinatesArray.push([])
+    gameBoardCoordinatesArray[i].push([xMin,xMax])
+    xMin = xMax
+    xMax += 56
+}
+console.log(Array(20).fill(gameBoardCoordinatesArray))
+
 let gameBoard = []
 
 for (let i=0; i < 400; i++) {
