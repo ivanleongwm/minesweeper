@@ -37,13 +37,96 @@ let characterLeftPos = parseInt(character.style.left)
 
 let keysPressed = [];
 document.addEventListener("keydown", e=>{
+    if (e.key === 'x') {
+        moveDown()
+    } else if (e.key === 'd') {
+        moveRight()
+    } else if (e.key === 'w') {
+        moveUp() 
+    } else if (e.key === 'a') {
+        moveLeft()
+    } else if (e.key === 'e') {
+        moveTopRight()
+    } else if (e.key === 'q') {
+        moveTopLeft()
+    } else if (e.key === 'c') {
+        moveBottomRight()
+    } else if (e.key === 'z') {
+        moveBottomLeft()
+    }
+    console.log(e)
     keysPressed[e.key] = true;
     console.log(keysPressed)
 })
 console.log(character.style.left)
 
-characterLeftPos = 200 
-
+function moveRight() {
+    characterLeftPos += 56
+    character.style.left = characterLeftPos + 'px'
+    character.style.transform = 'rotate('+90+'deg)';
+}
+function moveDown() {
+    characterTopPos += 56
+    character.style.top = characterTopPos + 'px'
+    character.style.transform = 'rotate('+180+'deg)';
+}
+function moveLeft() {
+    characterLeftPos -= 56
+    character.style.left = characterLeftPos + 'px'
+    character.style.transform = 'rotate('+270+'deg)';
+}
+function moveUp() {
+    characterTopPos -= 56
+    character.style.top = characterTopPos + 'px'
+    character.style.transform = 'rotate('+0+'deg)';
+}
+function moveTopRight() {
+    characterTopPos -= 56
+    characterLeftPos += 56
+    character.style.left = characterLeftPos + 'px'
+    character.style.top = characterTopPos + 'px'
+    character.style.transform = 'rotate('+45+'deg)';
+}
+function moveBottomRight() {
+    characterTopPos += 56
+    characterLeftPos += 56
+    character.style.left = characterLeftPos + 'px'
+    character.style.top = characterTopPos + 'px'
+    character.style.transform = 'rotate('+135+'deg)';
+}
+function moveBottomLeft() {
+    characterTopPos += 56
+    characterLeftPos -= 56
+    character.style.left = characterLeftPos + 'px'
+    character.style.top = characterTopPos + 'px'
+    character.style.transform = 'rotate('+225+'deg)';
+}
+function moveTopLeft() {
+    characterTopPos -= 56
+    characterLeftPos -= 56
+    character.style.left = characterLeftPos + 'px'
+    character.style.top = characterTopPos + 'px'
+    character.style.transform = 'rotate('+315+'deg)';
+}
+//moveRight()
+//moveDown()
+/*
+console.log(characterLeftPos)
+moveBottomRight()
+moveBottomRight()
+moveTopLeft()
+moveRight()
+moveBottomRight()
+moveBottomRight()
+moveBottomRight()
+moveBottomRight()
+moveBottomRight()
+moveBottomRight()
+moveBottomRight()
+moveBottomRight()
+*/
+//moveTopRight()
+//moveDown()
 //let characterLeftPos = parseInt(character.style.left)
 //console.log(characterLeftPos)
 // gameboard glass panel

@@ -64,4 +64,5 @@ body {
     top: 58px;
     left: 150px;
     z-index:1;
+    transition: top 1.5s ease, left 1.5s ease;
   }
