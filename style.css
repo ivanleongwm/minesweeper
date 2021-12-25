@@ -1,6 +1,6 @@
 body {
     display: block;
-    margin: 8px;
+    margin: 0px;
 }
 
 .title {
@@ -10,6 +10,8 @@ body {
 .glassPanelMap {
     align-items: center;
     display: flex;
+    width: 1130px;
+    margin: 0 auto;
     height: 1060px;
     justify-content: center;
 }
@@ -62,7 +64,7 @@ body {
     transform: rotate(90deg);
     position: absolute;
     top: 58px;
-    left: 150px;
+    left: 8px;
     z-index:1;
     transition: top 1.5s ease, left 1.5s ease;
   }

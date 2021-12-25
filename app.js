@@ -29,9 +29,11 @@ function startAnimation() {
 startAnimation();
 
 // Moving the character
+let topLeftYCoordGlassGrid = document.querySelector('.glassPanelMap').getBoundingClientRect().top
+let topLeftXCoordGlassGrid = document.querySelector('.glassPanelMap').getBoundingClientRect().left
 let character = document.querySelector('#sprite-image')
-character.style.top = 58 + 'px'
-character.style.left = 150 + 'px'
+character.style.top = topLeftYCoordGlassGrid + 'px'
+character.style.left = topLeftXCoordGlassGrid + 3 + 'px'
 let characterTopPos = parseInt(character.style.top)
 let characterLeftPos = parseInt(character.style.left)
 
@@ -58,7 +60,7 @@ document.addEventListener("keydown", e=>{
     keysPressed[e.key] = true;
     console.log(keysPressed)
 })
-console.log(character.style.left)
+//console.log(character.style.left)
 
 function moveRight() {
     characterLeftPos += 56
@@ -108,6 +110,12 @@ function moveTopLeft() {
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+315+'deg)';
 }
+
+console.log(topLeftYCoordGlassGrid)
+console.log(document.querySelector('.glassPanelMap').offsetLeft)
+console.log(topLeftXCoordGlassGrid)
+//console.log(document.querySelector('#sprite-image').getBoundingClientRect().left)
+
 //moveRight()
 //moveDown()
 /*
@@ -199,5 +207,6 @@ for (let i=0;i<gameBoard.length;i++) {
     //console.log(gameBoard[i])
 }
 
+//console.log(document.querySelector('#0').getBoundingClientRect().left)
 //console.log(gameBoard)
 //console.log(gameBoard.length)
