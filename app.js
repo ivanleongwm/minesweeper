@@ -28,8 +28,24 @@ function startAnimation() {
 //Start animation
 startAnimation();
 
+// Moving the character
+let character = document.querySelector('#sprite-image')
+character.style.top = 58 + 'px'
+character.style.left = 150 + 'px'
+let characterTopPos = parseInt(character.style.top)
+let characterLeftPos = parseInt(character.style.left)
 
+let keysPressed = [];
+document.addEventListener("keydown", e=>{
+    keysPressed[e.key] = true;
+    console.log(keysPressed)
+})
+console.log(character.style.left)
 
+characterLeftPos = 200 
+
+//let characterLeftPos = parseInt(character.style.left)
+//console.log(characterLeftPos)
 // gameboard glass panel
 let gameBoard = []
 
@@ -97,8 +113,8 @@ for (let i=0;i<gameBoard.length;i++) {
     }
 
     gameBoard[i].setAttribute('totalbreakableglassaround',numberOfBreakablePanelsAround)
-    console.log(gameBoard[i])
+    //console.log(gameBoard[i])
 }
 
-console.log(gameBoard)
-console.log(gameBoard.length)
+//console.log(gameBoard)
+//console.log(gameBoard.length)
