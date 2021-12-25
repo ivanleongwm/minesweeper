@@ -52,3 +52,11 @@ body {
     justify-content: center;
     width: 50px;
 }
+
+#sprite-image {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    background: url("final_strip_walking_man.png")
+      0px 0px;
+  }

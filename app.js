@@ -1,3 +1,4 @@
+/*
 let gameBoard = []
 
 for (let i=0; i < 400; i++) {
@@ -63,15 +64,40 @@ for (let i=0;i<gameBoard.length;i++) {
         numberOfBreakablePanelsAround++;
     }
 
-
-
-
-
-
-
     gameBoard[i].setAttribute('totalbreakableglassaround',numberOfBreakablePanelsAround)
     console.log(gameBoard[i])
 }
 
 console.log(gameBoard)
 console.log(gameBoard.length)
+*/
+
+var animationInterval;
+var spriteSheet = document.getElementById("sprite-image");
+var widthOfSpriteSheet = 3200;
+var widthOfEachSprite = 200;
+
+function stopAnimation() {
+  clearInterval(animationInterval);
+}
+
+function startAnimation() {
+  var position = widthOfEachSprite; //start position for the image
+  const speed = 100; //in millisecond(ms)
+  const diff = widthOfEachSprite; //difference between two sprites
+
+  animationInterval = setInterval(() => {
+    spriteSheet.style.backgroundPosition = `-${position}px 0px`;
+
+    if (position < widthOfSpriteSheet) {
+      position = position + diff;
+    } else {
+      //increment the position by the width of each sprite each time
+      position = widthOfEachSprite;
+    }
+    //reset the position to show first sprite after the last one
+  }, speed);
+}
+
+//Start animation
+startAnimation();
