@@ -194,7 +194,7 @@ for (let i=0; i < 400; i++) {
     const glassPanelMap = document.querySelector('.container');
     const newGlassPanel = document.createElement('div');
     newGlassPanel.id = i;
-    if (randomDecimal < 0.5) {
+    if (randomDecimal < 0.4) {
         newGlassPanel.classList.add('breakablePanel')
         newGlassPanel.addEventListener('click',()=>{
             newGlassPanel.className = 'panelbroken'

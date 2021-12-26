@@ -1,6 +1,7 @@
 body {
     display: block;
     margin: 0px;
+    background-image:url('perspectivebackground.jpg\,1600');
 }
 
 .title {
@@ -37,7 +38,9 @@ body {
     height: 50px;
     justify-content: center;
     width: 50px;
-    background-image:url('glassPanel.png');
+    background: rgba(157,177,255,0.5);
+    /*url('glassPanel.png');
+    opacity: 0.5;*/
 }
 .solidPanel:hover,.breakablePanel:hover {
     opacity:0.5;
