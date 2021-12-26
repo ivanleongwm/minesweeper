@@ -70,7 +70,7 @@ async function stepOnPanel(destinationPanel) {
         await sleep(1000)
         destinationPanel.className = 'panelbroken'
     } else {
-        await sleep(1000)
+        await sleep(800)
         destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
     }
 }
@@ -80,24 +80,25 @@ function moveRight() {
     characterLeftPos += 56
     character.style.left = characterLeftPos + 'px'
     character.style.transform = 'rotate('+90+'deg)';
-    let destinationPanel = document.getElementById(characterOnPanelNumber()+1)
-    //console.log(document.getElementById(characterOnPanelNumber()+1))
-    stepOnPanel(destinationPanel)
+    stepOnPanel(document.getElementById(characterOnPanelNumber()+1))
 }
 function moveDown() {
     characterTopPos += 56
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+180+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()+20))
 }
 function moveLeft() {
     characterLeftPos -= 56
     character.style.left = characterLeftPos + 'px'
     character.style.transform = 'rotate('+270+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()-1))
 }
 function moveUp() {
     characterTopPos -= 56
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+0+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()-20))
 }
 function moveTopRight() {
     characterTopPos -= 56
@@ -105,6 +106,7 @@ function moveTopRight() {
     character.style.left = characterLeftPos + 'px'
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+45+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()-20+1))
 }
 function moveBottomRight() {
     characterTopPos += 56
@@ -112,6 +114,7 @@ function moveBottomRight() {
     character.style.left = characterLeftPos + 'px'
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+135+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()+20+1))
 }
 function moveBottomLeft() {
     characterTopPos += 56
@@ -119,6 +122,7 @@ function moveBottomLeft() {
     character.style.left = characterLeftPos + 'px'
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+225+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()+20-1))
 }
 function moveTopLeft() {
     characterTopPos -= 56
@@ -126,6 +130,7 @@ function moveTopLeft() {
     character.style.left = characterLeftPos + 'px'
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+315+'deg)';
+    stepOnPanel(document.getElementById(characterOnPanelNumber()-20-1))
 }
 
 
