@@ -61,11 +61,28 @@ document.addEventListener("keydown", e=>{
     console.log(keysPressed)
 })
 //console.log(character.style.left)
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function stepOnPanel(destinationPanel) {
+    if (destinationPanel.getAttribute('class') === 'breakablePanel') {
+        await sleep(1000)
+        destinationPanel.className = 'panelbroken'
+    } else {
+        await sleep(1000)
+        destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
+    }
+}
+
 
 function moveRight() {
     characterLeftPos += 56
     character.style.left = characterLeftPos + 'px'
     character.style.transform = 'rotate('+90+'deg)';
+    let destinationPanel = document.getElementById(characterOnPanelNumber()+1)
+    //console.log(document.getElementById(characterOnPanelNumber()+1))
+    stepOnPanel(destinationPanel)
 }
 function moveDown() {
     characterTopPos += 56
@@ -111,9 +128,10 @@ function moveTopLeft() {
     character.style.transform = 'rotate('+315+'deg)';
 }
 
-console.log(topLeftYCoordGlassGrid)
-console.log(document.querySelector('.glassPanelMap').offsetLeft)
+
+//console.log(document.querySelector('.glassPanelMap').offsetLeft)
 console.log(topLeftXCoordGlassGrid)
+console.log(topLeftYCoordGlassGrid)
 
 let characterXCoord = document.querySelector('#sprite-image').getBoundingClientRect().left + 28
 let characterYCoord = document.querySelector('#sprite-image').getBoundingClientRect().top + 28
@@ -127,16 +145,42 @@ function getCharacterCoordinates() {
 }
 
 // Create min max array of x and y coordinates of each glass panel
-let gameBoardCoordinatesArray = []
-let xMin = 170;
-let xMax = 226;
-for (let i=0; i < 20; i++) {    
-    gameBoardCoordinatesArray.push([])
-    gameBoardCoordinatesArray[i].push([xMin,xMax])
-    xMin = xMax
-    xMax += 56
+let xArrayPattern = []
+let yMin = topLeftYCoordGlassGrid;
+let yMax = topLeftYCoordGlassGrid + 56;
+for (let x=0; x<20; x++) {
+    let xMin = topLeftXCoordGlassGrid;
+    let xMax = xMin + 56;
+    for (let i=0; i < 20; i++) {    
+        //xArrayPattern.push([])
+        xArrayPattern.push([[xMin,xMax],[yMin,yMax]])
+        xMin = xMax
+        xMax += 56
+    }
+    yMin = yMax
+    yMax += 56
 }
-console.log(Array(20).fill(gameBoardCoordinatesArray))
+console.log(xArrayPattern)
+
+function characterOnPanelNumber() {
+    /*
+    returns the glass panel index on the array that the character is currently situated on 
+    -- this function malfunctions when the gamegrid exceeds the screensize and there is a scroll bar on the left.
+    -- it returns a number that is less than the actual distance from the top when there is a scrollbar,
+    -- because it takes distance from top of the browser. This issue needs to be resolved. try to take distance from
+    -- top of grid instead of top of browser.
+    */
+    let characterXCoord = getCharacterCoordinates()[0]
+    let characterYCoord = getCharacterCoordinates()[1]
+    for (let i=0; i < xArrayPattern.length; i++) {
+        if (xArrayPattern[i][0][0] < characterXCoord && xArrayPattern[i][0][1] > characterXCoord && xArrayPattern[i][1][0] < characterYCoord && xArrayPattern[i][1][1] > characterYCoord) {
+            console.log(xArrayPattern[i])
+            console.log(i)
+            return  i
+        }
+    }
+}
+//characterOnPanelNumber()
 
 let gameBoard = []
 
