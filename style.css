@@ -1,4 +1,5 @@
 body {
+    zoom:75%;
     display: block;
     margin: 0px;
     background-image:url('perspectivebackground.jpg\,1600');
@@ -11,9 +12,9 @@ body {
 .glassPanelMap {
     align-items: center;
     display: flex;
-    width: 1130px;
+    width: 1126px;
     margin: 0 auto;
-    height: 1060px;
+    height: 1126px;
     justify-content: center;
 }
 
@@ -38,7 +39,7 @@ body {
     height: 50px;
     justify-content: center;
     width: 50px;
-    background: rgba(157,177,255,0.5);
+    background: rgba(143, 201, 255, 0.5);
     /*url('glassPanel.png');
     opacity: 0.5;*/
 }
