@@ -2,7 +2,6 @@ body {
     zoom:75%;
     display: block;
     margin: 0px;
-    background-image:url('perspectivebackground.jpg\,1600');
 }
 
 .title {
@@ -16,10 +15,11 @@ body {
     margin: 0 auto;
     height: 1126px;
     justify-content: center;
+    background-image:url('backgroundv1.png');
 }
 
 .container {
-    border: 3px solid #996633;
+    border: 3px solid #aaa9ad;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -31,7 +31,7 @@ body {
 
 .solidPanel,.breakablePanel {
     align-items: center;
-    border: 3px outset #996633;
+    border: 3px outset #aaa9ad;
     display: flex;
     font-family: 'Gaegu', cursive;
     font-size: 28px;
