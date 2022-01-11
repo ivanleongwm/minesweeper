@@ -88,18 +88,3 @@ body {
     z-index:1;
     transition: all 1.5s ease;
 }
-
-.fixed-div {
-    width: 85%;
-    margin: 0px auto;
-    text-align: left;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: -1;
-    padding-top: 80px;
-    box-sizing: border-box;
-    background-color: rgb(190, 190, 190);
-    font-size:30px;
-}

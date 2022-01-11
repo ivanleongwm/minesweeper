@@ -1,32 +1,71 @@
 var animationInterval;
 var spriteSheet = document.getElementById("sprite-image");
+//var widthOfSpriteSheet = 896;
+//var widthOfEachSprite = 56;
 var widthOfSpriteSheet = 896;
 var widthOfEachSprite = 56;
+var position = widthOfEachSprite; //start position for the image
+
+var brokenPanelsSteppedOn = 0;
+document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
 
 function stopAnimation() {
-  clearInterval(animationInterval);
+    $(function () {
+        $('#sprite-image').animate({'transform':'scale(0.5)',duration:1000})
+        //$('#sprite-image').animate({'top' : `${topLeftYCoordGlassGrid*2}px`,'left' : `${topLeftXCoordGlassGrid*2}px`,'zoom' : '0.5',},{duration: 2000, queue: false});
+        $('#sprite-image').animate({'top' : `${topLeftYCoordGlassGrid*2}px`},{duration: 2000, queue: false});
+        $('#sprite-image').animate({'left' : `${topLeftXCoordGlassGrid*2}px`},{duration: 2000, queue: false});
+    })
+    
+    //character.style.top = topLeftYCoordGlassGrid*2 + 'px'
+    //character.style.left = topLeftXCoordGlassGrid*2 + 3 + 'px'
+    //if (position == widthOfEachSprite) {
+    //    clearInterval(animationInterval);
+    //}
 }
 
+let iterations = 1
+
 function startAnimation() {
-  var position = widthOfEachSprite; //start position for the image
+  
   const speed = 100; //in millisecond(ms)
   const diff = widthOfEachSprite; //difference between two sprites
 
   animationInterval = setInterval(() => {
     spriteSheet.style.backgroundPosition = `-${position}px 0px`;
-
-    if (position < widthOfSpriteSheet) {
-      position = position + diff;
+    
+    
+    
+    if (iterations % 9 == 0 ) {
+        clearInterval(animationInterval);
     } else {
-      //increment the position by the width of each sprite each time
-      position = widthOfEachSprite;
+        if (position < widthOfSpriteSheet) {
+            position = position + diff;
+            console.log(position)
+          } else {
+            //increment the position by the width of each sprite each time
+            position = widthOfEachSprite;
+          }
     }
-    //reset the position to show first sprite after the last one
-  }, speed);
+    iterations++
+    console.log(iterations)
+    
+}, speed);
+    iterations = 1  //find a way to fix the issue when the direction key is pressed twice and animation runs forever.
+}
+
+function fall() {
+    
+    $('#sprite-image').attr('id','sprite-image-stationary');
+    $('#sprite-image').animate({"background-size":"80%"});
+    //$('#sprite-image').css('backgroundSize','40px');
+    //$('#sprite-image').css('background-size','40px');
+    //$('#sprite-image').css('background-repeat','no-repeat');
+    //$('#sprite-image').animate({'background-size':'40px','background-repeat':'no-repeat','background':'url(stationaryMale.png)'},100);
 }
 
 //Start animation
-startAnimation();
+//startAnimation();
 
 // Moving the character
 let topLeftYCoordGlassGrid = document.querySelector('.glassPanelMap').getBoundingClientRect().top
@@ -69,6 +108,9 @@ async function stepOnPanel(destinationPanel) {
     if (destinationPanel.getAttribute('class') === 'breakablePanel') {
         await sleep(1000)
         destinationPanel.className = 'panelbroken'
+        brokenPanelsSteppedOn += 1
+        document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
+
     } else {
         await sleep(800)
         destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
@@ -77,30 +119,35 @@ async function stepOnPanel(destinationPanel) {
 
 
 function moveRight() {
+    startAnimation()
     characterLeftPos += 56
     character.style.left = characterLeftPos + 'px'
     character.style.transform = 'rotate('+90+'deg)';
     stepOnPanel(document.getElementById(characterOnPanelNumber()+1))
 }
 function moveDown() {
+    startAnimation()
     characterTopPos += 56
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+180+'deg)';
     stepOnPanel(document.getElementById(characterOnPanelNumber()+20))
 }
 function moveLeft() {
+    startAnimation()
     characterLeftPos -= 56
     character.style.left = characterLeftPos + 'px'
     character.style.transform = 'rotate('+270+'deg)';
     stepOnPanel(document.getElementById(characterOnPanelNumber()-1))
 }
 function moveUp() {
+    startAnimation()
     characterTopPos -= 56
     character.style.top = characterTopPos + 'px'
     character.style.transform = 'rotate('+0+'deg)';
     stepOnPanel(document.getElementById(characterOnPanelNumber()-20))
 }
 function moveTopRight() {
+    startAnimation()
     characterTopPos -= 56
     characterLeftPos += 56
     character.style.left = characterLeftPos + 'px'
@@ -109,6 +156,7 @@ function moveTopRight() {
     stepOnPanel(document.getElementById(characterOnPanelNumber()-20+1))
 }
 function moveBottomRight() {
+    startAnimation()
     characterTopPos += 56
     characterLeftPos += 56
     character.style.left = characterLeftPos + 'px'
@@ -117,6 +165,7 @@ function moveBottomRight() {
     stepOnPanel(document.getElementById(characterOnPanelNumber()+20+1))
 }
 function moveBottomLeft() {
+    startAnimation()
     characterTopPos += 56
     characterLeftPos -= 56
     character.style.left = characterLeftPos + 'px'
@@ -125,6 +174,7 @@ function moveBottomLeft() {
     stepOnPanel(document.getElementById(characterOnPanelNumber()+20-1))
 }
 function moveTopLeft() {
+    startAnimation()
     characterTopPos -= 56
     characterLeftPos -= 56
     character.style.left = characterLeftPos + 'px'
@@ -148,6 +198,18 @@ function getCharacterCoordinates() {
     console.log(characterYCoord)
     return [characterXCoord,characterYCoord]
 }
+/*
+$('#sprite-image').click(function () {
+    $('#sprite-image').animate({height: '-=28px'},1000);
+    $('#sprite-image').animate({width: '-=28px'},1000);
+    stopAnimation()
+    $('#sprite-image').animate({'backgroundSize' : '500px'},1000);
+    
+})
+*/
+//$('#sprite-image').animate({width: '-=25px'},1000);
+//$('#sprite-image').animate({height: '-=25px'},1000);
+//$('#sprite-image').animate({'backgroundSize' : '1200px'},1000);
 
 // Create min max array of x and y coordinates of each glass panel
 let xArrayPattern = []
