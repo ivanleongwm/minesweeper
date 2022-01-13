@@ -5,9 +5,11 @@ var spriteSheet = document.getElementById("sprite-image");
 var widthOfSpriteSheet = 896;
 var widthOfEachSprite = 56;
 var position = widthOfEachSprite; //start position for the image
+let numberOfLives = '🦑🦑🦑🦑🦑';
 
 var brokenPanelsSteppedOn = 0;
 document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
+document.querySelector('.fixed-div-right').innerHTML = numberOfLives
 
 function stopAnimation() {
     $(function () {
@@ -109,6 +111,8 @@ async function stepOnPanel(destinationPanel) {
         await sleep(1000)
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
+        numberOfLives = numberOfLives.slice(0,-2)
+        document.querySelector('.fixed-div-right').innerHTML = numberOfLives
         document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
 
     } else {

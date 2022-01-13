@@ -100,6 +100,21 @@ body {
     z-index: -1;
     padding-top: 80px;
     box-sizing: border-box;
-    background-color: rgb(190, 190, 190);
+    background-color: rgb(255, 255, 255,0);
+    font-size:30px;
+}
+
+.fixed-div-right {
+    width: 85%;
+    margin: 0px auto;
+    text-align: right;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    padding-top: 80px;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255,0);
     font-size:30px;
 }
