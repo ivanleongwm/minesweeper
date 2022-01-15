@@ -2,24 +2,17 @@
 // 1. 
 
 // Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
+var modal = document.getElementById("myModalLose");
+var paragraph = document.querySelector
 var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -29,12 +22,10 @@ window.onclick = function(event) {
 
 var animationInterval;
 var spriteSheet = document.getElementById("sprite-image");
-//var widthOfSpriteSheet = 896;
-//var widthOfEachSprite = 56;
 var widthOfSpriteSheet = 896;
 var widthOfEachSprite = 56;
 var position = widthOfEachSprite; //start position for the image
-let numberOfLives = '🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑';
+let numberOfLives = '🦑🦑🦑';
 
 var brokenPanelsSteppedOn = 0;
 document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
@@ -43,16 +34,9 @@ document.querySelector('.fixed-div-right').innerHTML = numberOfLives
 function stopAnimation() {
     $(function () {
         $('#sprite-image').animate({'transform':'scale(0.5)',duration:1000})
-        //$('#sprite-image').animate({'top' : `${topLeftYCoordGlassGrid*2}px`,'left' : `${topLeftXCoordGlassGrid*2}px`,'zoom' : '0.5',},{duration: 2000, queue: false});
         $('#sprite-image').animate({'top' : `${topLeftYCoordGlassGrid*2}px`},{duration: 2000, queue: false});
         $('#sprite-image').animate({'left' : `${topLeftXCoordGlassGrid*2}px`},{duration: 2000, queue: false});
     })
-    
-    //character.style.top = topLeftYCoordGlassGrid*2 + 'px'
-    //character.style.left = topLeftXCoordGlassGrid*2 + 3 + 'px'
-    //if (position == widthOfEachSprite) {
-    //    clearInterval(animationInterval);
-    //}
 }
 
 let iterations = 1
@@ -88,17 +72,9 @@ function startAnimation() {
 }
 
 function fall() {
-    
     $('#sprite-image').attr('id','sprite-image-stationary');
     $('#sprite-image').animate({"background-size":"80%"});
-    //$('#sprite-image').css('backgroundSize','40px');
-    //$('#sprite-image').css('background-size','40px');
-    //$('#sprite-image').css('background-repeat','no-repeat');
-    //$('#sprite-image').animate({'background-size':'40px','background-repeat':'no-repeat','background':'url(stationaryMale.png)'},100);
 }
-
-//Start animation
-//startAnimation();
 
 // Moving the character
 let topLeftYCoordGlassGrid = document.querySelector('.glassPanelMap').getBoundingClientRect().top
@@ -143,17 +119,19 @@ async function stepOnPanel(destinationPanel) {
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
         numberOfLives = numberOfLives.slice(0,-2)
+        document.getElementById("myImg").src = "ouch.jpg";
         document.querySelector('.fixed-div-right').innerHTML = numberOfLives
         checkWin(getCharacterCoordinates())
         if (numberOfLives === '') {
+            document.getElementById("modalBoxContent").innerHTML = 'You lose! Try again!'
             modal.style.display = "block";
-            //alert('You Lose!')
         }
         document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
 
     } else {
         await sleep(800)
         checkWin(getCharacterCoordinates())
+        document.getElementById("myImg").src = "smile.jpg";
         destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
     }
 }
@@ -245,6 +223,7 @@ function checkWin(currentXYCoordinates) {
     console.log("Checking win:",currentXYCoordinates)
     if (currentXYCoordinates[0] > 1174) {
         //alert("you win!")
+        //modal.style.display = "block";
     }
  }
 
@@ -281,7 +260,9 @@ function characterOnPanelNumber() {
             console.log(xArrayPattern[i])
             console.log(i)
             if (i !== 0 && ((i-19) % 20) === 0) {
-                alert('You Win!')
+                document.getElementById("modalBoxContent").innerHTML = 'You Win! Congratulation!'
+                modal.style.display = "block";
+                //alert('You Win!')
             }
             return  i
         }

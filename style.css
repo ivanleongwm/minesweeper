@@ -156,3 +156,20 @@ color: black;
 text-decoration: none;
 cursor: pointer;
 }
+
+.expression {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#999;
+}
+
+#myImg {
+    position: absolute;
+    left:50px;
+    bottom: 10px;
+    width: 400px;
+    border: 3px solid #8AC007;
+}
