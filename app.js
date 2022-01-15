@@ -1,3 +1,32 @@
+// Clear rules for the game:
+// 1. 
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 var animationInterval;
 var spriteSheet = document.getElementById("sprite-image");
 //var widthOfSpriteSheet = 896;
@@ -5,7 +34,7 @@ var spriteSheet = document.getElementById("sprite-image");
 var widthOfSpriteSheet = 896;
 var widthOfEachSprite = 56;
 var position = widthOfEachSprite; //start position for the image
-let numberOfLives = '🦑🦑🦑🦑🦑';
+let numberOfLives = '🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑🦑';
 
 var brokenPanelsSteppedOn = 0;
 document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
@@ -28,6 +57,8 @@ function stopAnimation() {
 
 let iterations = 1
 
+let intervals = []
+
 function startAnimation() {
   
   const speed = 100; //in millisecond(ms)
@@ -36,21 +67,21 @@ function startAnimation() {
   animationInterval = setInterval(() => {
     spriteSheet.style.backgroundPosition = `-${position}px 0px`;
     
+    intervals.push(animationInterval)
     
-    
-    if (iterations % 9 == 0 ) {
-        clearInterval(animationInterval);
+    if (iterations % 9 === 0 ) {
+        intervals.forEach(aniI=>            clearInterval(aniI)        )
     } else {
         if (position < widthOfSpriteSheet) {
             position = position + diff;
-            console.log(position)
+            console.log("current positon",position)
           } else {
             //increment the position by the width of each sprite each time
             position = widthOfEachSprite;
           }
     }
     iterations++
-    console.log(iterations)
+    console.log("iterations",iterations)
     
 }, speed);
     iterations = 1  //find a way to fix the issue when the direction key is pressed twice and animation runs forever.
@@ -113,13 +144,16 @@ async function stepOnPanel(destinationPanel) {
         brokenPanelsSteppedOn += 1
         numberOfLives = numberOfLives.slice(0,-2)
         document.querySelector('.fixed-div-right').innerHTML = numberOfLives
+        checkWin(getCharacterCoordinates())
         if (numberOfLives === '') {
-            alert('You Lose!')
+            modal.style.display = "block";
+            //alert('You Lose!')
         }
         document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
 
     } else {
         await sleep(800)
+        checkWin(getCharacterCoordinates())
         destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
     }
 }
@@ -127,6 +161,7 @@ async function stepOnPanel(destinationPanel) {
 
 function moveRight() {
     startAnimation()
+    
     characterLeftPos += 56
     character.style.left = characterLeftPos + 'px'
     character.style.transform = 'rotate('+90+'deg)';
@@ -205,18 +240,13 @@ function getCharacterCoordinates() {
     console.log(characterYCoord)
     return [characterXCoord,characterYCoord]
 }
-/*
-$('#sprite-image').click(function () {
-    $('#sprite-image').animate({height: '-=28px'},1000);
-    $('#sprite-image').animate({width: '-=28px'},1000);
-    stopAnimation()
-    $('#sprite-image').animate({'backgroundSize' : '500px'},1000);
-    
-})
-*/
-//$('#sprite-image').animate({width: '-=25px'},1000);
-//$('#sprite-image').animate({height: '-=25px'},1000);
-//$('#sprite-image').animate({'backgroundSize' : '1200px'},1000);
+
+function checkWin(currentXYCoordinates) {
+    console.log("Checking win:",currentXYCoordinates)
+    if (currentXYCoordinates[0] > 1174) {
+        //alert("you win!")
+    }
+ }
 
 // Create min max array of x and y coordinates of each glass panel
 let xArrayPattern = []
@@ -250,6 +280,9 @@ function characterOnPanelNumber() {
         if (xArrayPattern[i][0][0] < characterXCoord && xArrayPattern[i][0][1] > characterXCoord && xArrayPattern[i][1][0] < characterYCoord && xArrayPattern[i][1][1] > characterYCoord) {
             console.log(xArrayPattern[i])
             console.log(i)
+            if (i !== 0 && ((i-19) % 20) === 0) {
+                alert('You Win!')
+            }
             return  i
         }
     }
@@ -325,6 +358,5 @@ for (let i=0;i<gameBoard.length;i++) {
     //console.log(gameBoard[i])
 }
 
-//console.log(document.querySelector('#0').getBoundingClientRect().left)
-//console.log(gameBoard)
-//console.log(gameBoard.length)
+let xWinMinMax = [1174.599998474121, 1230.599998474121]
+
