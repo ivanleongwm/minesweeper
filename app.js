@@ -25,7 +25,7 @@ var spriteSheet = document.getElementById("sprite-image");
 var widthOfSpriteSheet = 896;
 var widthOfEachSprite = 56;
 var position = widthOfEachSprite; //start position for the image
-let numberOfLives = '🦑🦑🦑';
+let numberOfLives = '🦑🦑🦑🦑🦑🦑🦑';
 
 var brokenPanelsSteppedOn = 0;
 document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
