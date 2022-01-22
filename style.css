@@ -62,7 +62,7 @@ body {
 #sprite-image {
     height: 56px;
     width: 56px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     background: url("final_strip_walking_man_min.png")
       0px 0px;
     transform: rotate(90deg);
@@ -76,7 +76,7 @@ body {
 #sprite-image-stationary {
     height: 56px;
     width: 56px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     background: url("stationaryMale.png")
       0px 0px;
     transform: rotate(90deg);
@@ -101,7 +101,7 @@ body {
     padding-top: 80px;
     box-sizing: border-box;
     background-color: rgb(255, 255, 255,0);
-    font-size:30px;
+    font-size:40px;
 }
 
 .fixed-div-right {
@@ -116,7 +116,7 @@ body {
     padding-top: 80px;
     box-sizing: border-box;
     background-color: rgb(255, 255, 255,0);
-    font-size:30px;
+    font-size:50px;
 }
 
 /* The Modal (background) */
@@ -139,6 +139,7 @@ background-color: #fefefe;
 margin: 15% auto; /* 15% from the top and centered */
 padding: 20px;
 border: 1px solid #888;
+font-size: 40px;
 width: 80%; /* Could be more or less, depending on screen size */
 }
 
