@@ -1,30 +1,46 @@
+let characterOnPanelNumber = 0
+
 document.addEventListener(
     // adds event lister to directional key to move character
     "keydown", e=>{
     switch(e.key) {
         case 'x':
-            moveCharacter('down');
+            if (characterOnPanelNumber < 380) {
+                moveCharacter('down');
+            }
             break;
         case 'd':
             moveCharacter('right');
             break;
         case 'w':
-            moveCharacter('up');
-            break;d
+            if (characterOnPanelNumber >19) {
+                moveCharacter('up');
+            }
+            break;
         case 'a':
-            moveCharacter('left');
+            if (characterOnPanelNumber%20 !== 0) {
+                moveCharacter('left');
+            }
             break;
         case 'e':
-            moveCharacter('top-right');
+            if (characterOnPanelNumber >19) {
+                moveCharacter('top-right');
+            }
             break;
         case 'c':
-            moveCharacter('bottom-right');
+            if (characterOnPanelNumber < 380) {
+                moveCharacter('bottom-right');
+            }
             break;
         case 'q':
-            moveCharacter('top-left');
+            if (characterOnPanelNumber%20 !== 0 && characterOnPanelNumber >19) {
+                moveCharacter('top-left');
+            }
             break;
         case 'z':
-            moveCharacter('bottom-left');
+            if ((characterOnPanelNumber%20 !== 0) && characterOnPanelNumber < 380) {
+                moveCharacter('bottom-left');
+            }
             break;
     }
     console.log('keypressed',e.key)
@@ -37,14 +53,16 @@ function updateCharacterCoordinates(leftPos,topPos,rotateString,panelNumberAdd) 
             character.style.left = characterLeftPos + 'px'
             character.style.top = characterTopPos + 'px'
             character.style.transform = rotateString;
-            stepOnPanel(document.getElementById(characterOnPanelNumber()+panelNumberAdd))
+            characterOnPanelNumber += panelNumberAdd;
+            stepOnPanel(document.getElementById(characterOnPanelNumber))
+            console.log("character is currently on panel:",characterOnPanelNumber)
 }
 
 //Sprite animation of character moving
-var spriteSheet = document.getElementById("sprite-image");
-var widthOfEachSprite = 56;
-var widthOfSpriteSheet = 896;
-var position = widthOfEachSprite; //start position for the image
+let spriteSheet = document.getElementById("sprite-image");
+let widthOfEachSprite = 56;
+let widthOfSpriteSheet = 896;
+let position = widthOfEachSprite; //start position for the image
 let iterations = 1;
 let intervals = []
 
@@ -69,6 +87,19 @@ function startAnimation() {
         iterations++ //console.log("iterations",iterations)
     }, speed);
     iterations = 1  //find a way to fix the issue when the direction key is pressed twice and animation runs forever.
+}
+
+let finalColReached = false;
+
+function checkWin(i) {
+    if ((characterOnPanelNumber + 1) % 20 === 0) {
+        finalColReached = true;
+    }
+    if (i !== 0 && (i % 20 === 0) && finalColReached) {
+        document.getElementById("modalBoxContent").innerHTML = 'You Win! Congratulation!'
+        document.getElementById("myModalLose").style.display = "block";
+        //alert('You Win!')
+    }
 }
 
 function moveCharacter(direction) {
@@ -100,4 +131,5 @@ function moveCharacter(direction) {
             updateCharacterCoordinates(-56,-56,'rotate('+315+'deg)',-21);
             break;
         }
+    checkWin(characterOnPanelNumber)
 }

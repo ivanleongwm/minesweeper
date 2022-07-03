@@ -109,14 +109,15 @@ for (let x=0; x<20; x++) {
 }
 console.log(xArrayPattern)
 
+/*
 function characterOnPanelNumber() {
-    /*
+    
     returns the glass panel index on the array that the character is currently situated on 
     -- this function malfunctions when the gamegrid exceeds the screensize and there is a scroll bar on the left.
     -- it returns a number that is less than the actual distance from the top when there is a scrollbar,
     -- because it takes distance from top of the browser. This issue needs to be resolved. try to take distance from
     -- top of grid instead of top of browser.
-    */
+    
     let characterXCoord = getCharacterCoordinates()[0]
     let characterYCoord = getCharacterCoordinates()[1]
     for (let i=0; i < xArrayPattern.length; i++) {
@@ -132,6 +133,6 @@ function characterOnPanelNumber() {
         }
     }
 }
-
+*/
 let xWinMinMax = [1174.599998474121, 1230.599998474121]
 
