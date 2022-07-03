@@ -19,56 +19,12 @@ window.onclick = function(event) {
   }
 }
 
-var animationInterval;
-var spriteSheet = document.getElementById("sprite-image");
-var widthOfSpriteSheet = 896;
-var widthOfEachSprite = 56;
-var position = widthOfEachSprite; //start position for the image
+
 let numberOfLives = '🦑🦑🦑🦑🦑🦑🦑';
 
 var brokenPanelsSteppedOn = 0;
 document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
 document.querySelector('.fixed-div-right').innerHTML = numberOfLives
-
-function stopAnimation() {
-    $(function () {
-        $('#sprite-image').animate({'transform':'scale(0.5)',duration:1000})
-        $('#sprite-image').animate({'top' : `${topLeftYCoordGlassGrid*2}px`},{duration: 2000, queue: false});
-        $('#sprite-image').animate({'left' : `${topLeftXCoordGlassGrid*2}px`},{duration: 2000, queue: false});
-    })
-}
-
-let iterations = 1
-
-let intervals = []
-
-function startAnimation() {
-  
-  const speed = 100; //in millisecond(ms)
-  const diff = widthOfEachSprite; //difference between two sprites
-
-  animationInterval = setInterval(() => {
-    spriteSheet.style.backgroundPosition = `-${position}px 0px`;
-    
-    intervals.push(animationInterval)
-    
-    if (iterations % 9 === 0 ) {
-        intervals.forEach(aniI=>            clearInterval(aniI)        )
-    } else {
-        if (position < widthOfSpriteSheet) {
-            position = position + diff;
-            console.log("current positon",position)
-          } else {
-            //increment the position by the width of each sprite each time
-            position = widthOfEachSprite;
-          }
-    }
-    iterations++
-    console.log("iterations",iterations)
-    
-}, speed);
-    iterations = 1  //find a way to fix the issue when the direction key is pressed twice and animation runs forever.
-}
 
 function fall() {
     $('#sprite-image').attr('id','sprite-image-stationary');
