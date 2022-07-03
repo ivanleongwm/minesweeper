@@ -49,27 +49,27 @@ let iterations = 1;
 let intervals = []
 
 function startAnimation() {
-  
-  const speed = 100; //in millisecond(ms)
-  const diff = widthOfEachSprite; //difference between two sprites
 
-  let animationInterval = setInterval(() => {
-    spriteSheet.style.backgroundPosition = `-${position}px 0px`;
-    intervals.push(animationInterval);
-    if (iterations % 9 === 0 ) {
-        intervals.forEach(aniI=>clearInterval(aniI))
-    } else {
-        if (position < widthOfSpriteSheet) {
-            position = position + diff; //console.log("current positon",position)
-          } else {
-            position = widthOfEachSprite; //increment the position by the width of each sprite each time
-          }
-    }
-    iterations++ //console.log("iterations",iterations)
-}, speed);
+    const speed = 100; //in millisecond(ms)
+    const diff = widthOfEachSprite; //difference between two sprites
+
+    let animationInterval = setInterval(() => {
+        spriteSheet.style.backgroundPosition = `-${position}px 0px`;
+        intervals.push(animationInterval);
+        if (iterations % 9 === 0 ) {
+            intervals.forEach(aniI=>clearInterval(aniI))
+        } 
+        else {
+            if (position < widthOfSpriteSheet) {
+                position = position + diff; //console.log("current positon",position)
+            } else {
+                position = widthOfEachSprite; //increment the position by the width of each sprite each time
+            }
+        }
+        iterations++ //console.log("iterations",iterations)
+    }, speed);
     iterations = 1  //find a way to fix the issue when the direction key is pressed twice and animation runs forever.
 }
-
 
 function moveCharacter(direction) {
     //takes a direction string as input and calls the functions to move the character icon
