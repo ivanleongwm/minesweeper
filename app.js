@@ -1,6 +1,5 @@
 // Clear rules for the game:
 // 1. 
-
 // Get the modal
 var modal = document.getElementById("myModalLose");
 var paragraph = document.querySelector
@@ -85,29 +84,7 @@ character.style.left = topLeftXCoordGlassGrid + 3 + 'px'
 let characterTopPos = parseInt(character.style.top)
 let characterLeftPos = parseInt(character.style.left)
 
-let keysPressed = [];
-document.addEventListener("keydown", e=>{
-    if (e.key === 'x') {
-        moveDown()
-    } else if (e.key === 'd') {
-        moveRight()
-    } else if (e.key === 'w') {
-        moveUp() 
-    } else if (e.key === 'a') {
-        moveLeft()
-    } else if (e.key === 'e') {
-        moveTopRight()
-    } else if (e.key === 'q') {
-        moveTopLeft()
-    } else if (e.key === 'c') {
-        moveBottomRight()
-    } else if (e.key === 'z') {
-        moveBottomLeft()
-    }
-    console.log(e)
-    keysPressed[e.key] = true;
-    console.log(keysPressed)
-})
+
 //console.log(character.style.left)
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -136,75 +113,6 @@ async function stepOnPanel(destinationPanel) {
     }
 }
 
-
-function moveRight() {
-    startAnimation()
-    
-    characterLeftPos += 56
-    character.style.left = characterLeftPos + 'px'
-    character.style.transform = 'rotate('+90+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()+1))
-}
-function moveDown() {
-    startAnimation()
-    characterTopPos += 56
-    character.style.top = characterTopPos + 'px'
-    character.style.transform = 'rotate('+180+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()+20))
-}
-function moveLeft() {
-    startAnimation()
-    characterLeftPos -= 56
-    character.style.left = characterLeftPos + 'px'
-    character.style.transform = 'rotate('+270+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()-1))
-}
-function moveUp() {
-    startAnimation()
-    characterTopPos -= 56
-    character.style.top = characterTopPos + 'px'
-    character.style.transform = 'rotate('+0+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()-20))
-}
-function moveTopRight() {
-    startAnimation()
-    characterTopPos -= 56
-    characterLeftPos += 56
-    character.style.left = characterLeftPos + 'px'
-    character.style.top = characterTopPos + 'px'
-    character.style.transform = 'rotate('+45+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()-20+1))
-}
-function moveBottomRight() {
-    startAnimation()
-    characterTopPos += 56
-    characterLeftPos += 56
-    character.style.left = characterLeftPos + 'px'
-    character.style.top = characterTopPos + 'px'
-    character.style.transform = 'rotate('+135+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()+20+1))
-}
-function moveBottomLeft() {
-    startAnimation()
-    characterTopPos += 56
-    characterLeftPos -= 56
-    character.style.left = characterLeftPos + 'px'
-    character.style.top = characterTopPos + 'px'
-    character.style.transform = 'rotate('+225+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()+20-1))
-}
-function moveTopLeft() {
-    startAnimation()
-    characterTopPos -= 56
-    characterLeftPos -= 56
-    character.style.left = characterLeftPos + 'px'
-    character.style.top = characterTopPos + 'px'
-    character.style.transform = 'rotate('+315+'deg)';
-    stepOnPanel(document.getElementById(characterOnPanelNumber()-20-1))
-}
-
-
-//console.log(document.querySelector('.glassPanelMap').offsetLeft)
 console.log(topLeftXCoordGlassGrid)
 console.log(topLeftYCoordGlassGrid)
 
@@ -267,76 +175,6 @@ function characterOnPanelNumber() {
             return  i
         }
     }
-}
-//characterOnPanelNumber()
-
-let gameBoard = []
-
-for (let i=0; i < 400; i++) {
-    let randomDecimal = Math.random()
-    const glassPanelMap = document.querySelector('.container');
-    const newGlassPanel = document.createElement('div');
-    newGlassPanel.id = i;
-    if (randomDecimal < 0.4) {
-        newGlassPanel.classList.add('breakablePanel')
-        newGlassPanel.addEventListener('click',()=>{
-            newGlassPanel.className = 'panelbroken'
-        })
-    } else {
-        newGlassPanel.classList.add('solidPanel')
-        newGlassPanel.addEventListener('click',()=>{
-            newGlassPanel.innerText = newGlassPanel.getAttribute('totalbreakableglassaround')
-        })
-    }
-    glassPanelMap.appendChild(newGlassPanel)
-    gameBoard.push(newGlassPanel)
-};
-
-// count the number of breakable panels around each panel
-for (let i=0;i<gameBoard.length;i++) {
-    let numberOfBreakablePanelsAround = 0;
-    let leftCorner = (i%20 === 0);
-    let rightCorner = ((i-19)%20 === 0);
-
-    // adds one if tile above is breakable
-    if (i>19 && gameBoard[i-20].classList.contains('breakablePanel')) {
-        numberOfBreakablePanelsAround++;
-    }
-    // adds one if tile to the top-right is breakable
-    if (i>19 && gameBoard[i-20+1].classList.contains('breakablePanel') && !rightCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-    
-    // adds one if tile to the top-right is breakable
-    if (i>20 && gameBoard[i-20-1].classList.contains('breakablePanel') && !leftCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-
-    // adds one if tile to the right is breakable
-    if (i>0 && gameBoard[i+1].classList.contains('breakablePanel') && !rightCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-    // adds one if tile to the left is breakable
-    if (i>0 && gameBoard[i-1].classList.contains('breakablePanel') && !leftCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-    // adds one if tile to the bottom-right is breakable
-    if (i>0 && i<379 && gameBoard[i+20+1].classList.contains('breakablePanel') && !rightCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-
-    // adds one if tile to the bottom is breakable
-    if (i>0 && i<379 && gameBoard[i+20].classList.contains('breakablePanel') && !rightCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-
-    // adds one if tile to the bottom-left is breakable
-    if (i>0 && i<379 && gameBoard[i+20-1].classList.contains('breakablePanel') && !rightCorner) {
-        numberOfBreakablePanelsAround++;
-    }
-
-    gameBoard[i].setAttribute('totalbreakableglassaround',numberOfBreakablePanelsAround)
-    //console.log(gameBoard[i])
 }
 
 let xWinMinMax = [1174.599998474121, 1230.599998474121]
