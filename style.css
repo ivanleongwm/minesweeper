@@ -71,6 +71,19 @@ body {
     transition: top 1.5s ease, left 1.5s ease;
 }
 
+#gamemaster-sprite-image {
+    height: 380px;
+    width: 540px;
+    /*border: 1px solid black;*/
+    background: url("images/gameMasterSprite.png")
+      0px 0px;
+    position: absolute;
+    top: 58px;
+    left: 8px;
+    z-index:1;
+    transition: top 1.5s ease, left 1.5s ease;
+}
+
 #sprite-image-stationary {
     height: 56px;
     width: 56px;
