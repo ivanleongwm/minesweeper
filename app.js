@@ -2,7 +2,6 @@
 // 1. 
 // Get the modal
 var modal = document.getElementById("myModalLose");
-var paragraph = document.querySelector
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
@@ -52,7 +51,7 @@ async function stepOnPanel(destinationPanel) {
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
         numberOfLives = numberOfLives.slice(0,-2)
-        document.getElementById("myImg").src = "ouch.jpg";
+        document.getElementById("myImg").src = "images/ouch.jpg";
         document.querySelector('.fixed-div-right').innerHTML = numberOfLives
         checkWin(getCharacterCoordinates())
         if (numberOfLives === '') {
@@ -60,11 +59,10 @@ async function stepOnPanel(destinationPanel) {
             modal.style.display = "block";
         }
         document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
-
     } else {
         await sleep(800)
         checkWin(getCharacterCoordinates())
-        document.getElementById("myImg").src = "smile.jpg";
+        document.getElementById("myImg").src = "images/smile.jpg";
         destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
     }
 }
