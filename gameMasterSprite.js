@@ -55,3 +55,13 @@ function startGameMasterContinuousAnimation() {
     },50);
 }
 */
+function openingMessage() {
+    var audio = new Audio('images/openingMessage.mp3');
+    audio.play();
+    startAnimationGamemaster();
+    setTimeout(startAnimationGamemaster(),1500);
+    startAnimationGamemaster();
+}
+
+setTimeout(openingMessage,1500);
+

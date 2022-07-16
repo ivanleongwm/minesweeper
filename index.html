@@ -8,56 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--
-    <div class="instructions"><br/><b>SQUID GAME MINESWEEPER</b><br/>Use the keyboard "Q,W,E,A,D,Z,X,C" as directional keys to move the man from the left all the way to the right to win.
-    <br/>The numbers that appear on the glass are the number of broken panels surrounding that glass panel.
-    <br/>Each time the man steps on a broken glass, a squid life is lost. When all lives are lost you lose. :)
-    </div>
-    -->
-    <div class='fixed-div'></div>
-    <div class='fixed-div-right'></div> <!--somehow this cannot be commented out-->
-    <div id="sprite-container">
-        <div id="sprite-image">
-        </div>
-    </div>
-    <div class="title"></div>
-    <div class="game-components-container">
-        <div>
-            <div class="squidgame-left-panel">
-            </div>
-            <audio controls autoplay>
-                <source src="images/pinkSoldiers.mp3" type="audio/mpeg">
-              </audio>
-        </div>
-        <div class="glassPanelMap">
-            <div class="container"></div>
-        </div>
-        <div class="results-container">
-            <div id="gamemaster-sprite-image"></div>
-            <div class="players-container">
-                <img id="players" src="images/playersStart.png">
-            </div>
-            
-        </div>  
-    </div>
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn"></button>
-    <!--<img id="myImg" src="images/smile.jpg">  cannot be commented out also-->
-    <!-- The Modal -->
-    <div id="myModalLose" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="modalBoxContent">You Lose</p>
-    </div>
-    
-    
-</div>
+    <h1>Hello World</h1>
+    <button onClick="(function(){
+        console.log('Hey i am calling');
+        window.location.href = 'mainPage.html';
+        return false;
+    })();return false;">Start Game</button>
 </body>
 <footer>
-    <script src="app.js"></script>
+    <!--
+ <script src="app.js"></script>
     <script src="characterControls.js"></script>
     <script src="grid.js"></script>
     <script src="gameMasterSprite.js"></script>
+    -->
+   
 </footer>
 </html>

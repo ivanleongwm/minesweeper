@@ -57,6 +57,9 @@ async function stepOnPanel(destinationPanel) {
         }
         //document.querySelector('.fixed-div-right').innerHTML = numberOfLives
         checkWin(getCharacterCoordinates())
+        var audio = new Audio('images/glassbreak.mp3');
+        audio.play();
+        
         if (numberOfLives === '') {
             document.getElementById("modalBoxContent").innerHTML = 'You lose! Try again!'
             modal.style.display = "block";
