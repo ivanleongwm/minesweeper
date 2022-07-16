@@ -68,18 +68,10 @@ body {
     margin-left:60px;
 }
 
-#players {
-    height: 825px;
-    width: 440px;
-    /*border: 1px solid black;*/
-    background: url("images/playersStart.png")
-      0px 0px;
+.players-container {
     position: relative;
-    top: 0px;
-    left: 8px;
-    z-index:1;
     margin: 0 auto;
-    transition: top 1.5s ease, left 1.5s ease;
+    text-align: center;
 }
 
 .solidPanel,.breakablePanel {

@@ -52,7 +52,9 @@ async function stepOnPanel(destinationPanel) {
         brokenPanelsSteppedOn += 1
         startAnimationGamemaster()
         numberOfLives = numberOfLives.slice(0,-2)
-        //document.getElementById("myImg").src = "images/ouch.jpg";
+        if (brokenPanelsSteppedOn < 8) {
+            document.getElementById("players").src = `images/playersStart${brokenPanelsSteppedOn}.png`;
+        }
         //document.querySelector('.fixed-div-right').innerHTML = numberOfLives
         checkWin(getCharacterCoordinates())
         if (numberOfLives === '') {
