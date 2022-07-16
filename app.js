@@ -1,6 +1,8 @@
 // Clear rules for the game:
 // 1. 
 // Get the modal
+
+
 var modal = document.getElementById("myModalLose");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
