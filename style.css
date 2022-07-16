@@ -11,8 +11,8 @@ body {
 }
 
 .squidgame-left-panel {
-    height: 1050px;
-    width: 564px;
+    height: 1155px;
+    width: 620px;
     /*border: 1px solid black;*/
     background: url("images/SquidGameLeftPanel.png")
       0px 0px;
@@ -20,6 +20,7 @@ body {
     top: 0px;
     left: 8px;
     z-index:1;
+    margin-right:30px;
     transition: top 1.5s ease, left 1.5s ease;
 }
 
@@ -62,8 +63,8 @@ body {
     transition: top 1.5s ease, left 1.5s ease;
 }
 
-#results-container {
-    margin-left:30px;
+.results-container {
+    margin-left:60px;
 }
 
 #players {
