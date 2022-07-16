@@ -10,7 +10,7 @@ function startAnimationGamemaster() {
 
     const speed = 50; //in millisecond(ms)
     const diff = widthOfGamemasterSprite; //difference between two sprites
-
+    for ()
     let animationIntervalGamemaster = setInterval(() => {
         gameMasterSpriteSheet.style.backgroundPosition = `-${positionGamemaster}px 0px`;
         intervalsGamemaster.push(animationIntervalGamemaster);
@@ -58,9 +58,7 @@ function startGameMasterContinuousAnimation() {
 function openingMessage() {
     var audio = new Audio('images/openingMessage.mp3');
     audio.play();
-    startAnimationGamemaster();
-    setTimeout(startAnimationGamemaster(),1500);
-    startAnimationGamemaster();
+    startAnimationGamemasterBeginning();
 }
 
 setTimeout(openingMessage,1500);
