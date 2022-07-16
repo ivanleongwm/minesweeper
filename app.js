@@ -50,6 +50,7 @@ async function stepOnPanel(destinationPanel) {
         await sleep(1000)
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
+        startAnimationGamemaster()
         numberOfLives = numberOfLives.slice(0,-2)
         //document.getElementById("myImg").src = "images/ouch.jpg";
         //document.querySelector('.fixed-div-right').innerHTML = numberOfLives

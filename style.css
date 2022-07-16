@@ -22,6 +22,7 @@ body {
     z-index:1;
     margin-right:30px;
     transition: top 1.5s ease, left 1.5s ease;
+    text-align: bottom;
 }
 
 .game-components-container {
