@@ -2,32 +2,83 @@ body {
     zoom:50%;
     display: block;
     margin: 0px;
+    background-image: url("images/bluetilebackground.png");
+    background-repeat: repeat;
 }
 
 .title {
     height:50px;
 }
 
+.squidgame-left-panel {
+    height: 1050px;
+    width: 564px;
+    /*border: 1px solid black;*/
+    background: url("images/SquidGameLeftPanel.png")
+      0px 0px;
+    position: relative;
+    top: 0px;
+    left: 8px;
+    z-index:1;
+    transition: top 1.5s ease, left 1.5s ease;
+}
+
+.game-components-container {
+    display:flex;
+    flex-wrap:wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
 .glassPanelMap {
     align-items: center;
     display: flex;
     width: 1126px;
-    margin: 0 auto;
     height: 1126px;
     justify-content: center;
     background-image:url('images/gridBackground.png');
+    position:relative;
 }
 
 .container {
     border: 3px solid #aaa9ad;
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
     position: relative;
     width: 1120px;
 }
 
+#gamemaster-sprite-image {
+    margin-left:50px;
+    height: 380px;
+    width: 540px;
+    /*border: 1px solid black;*/
+    background: url("images/gameMasterSprite.png")
+      0px 0px;
+    position: relative;
+    top: 0px;
+    left: 8px;
+    z-index:1;
+    transition: top 1.5s ease, left 1.5s ease;
+}
 
+#results-container {
+    margin-left:30px;
+}
+
+#players {
+    height: 825px;
+    width: 440px;
+    /*border: 1px solid black;*/
+    background: url("images/playersStart.png")
+      0px 0px;
+    position: relative;
+    top: 0px;
+    left: 8px;
+    z-index:1;
+    margin: 0 auto;
+    transition: top 1.5s ease, left 1.5s ease;
+}
 
 .solidPanel,.breakablePanel {
     align-items: center;
@@ -71,18 +122,7 @@ body {
     transition: top 1.5s ease, left 1.5s ease;
 }
 
-#gamemaster-sprite-image {
-    height: 380px;
-    width: 540px;
-    /*border: 1px solid black;*/
-    background: url("images/gameMasterSprite.png")
-      0px 0px;
-    position: absolute;
-    top: 58px;
-    left: 8px;
-    z-index:1;
-    transition: top 1.5s ease, left 1.5s ease;
-}
+
 
 #sprite-image-stationary {
     height: 56px;

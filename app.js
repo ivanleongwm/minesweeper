@@ -22,8 +22,8 @@ window.onclick = function(event) {
 let numberOfLives = '🦑🦑🦑🦑🦑🦑🦑';
 
 var brokenPanelsSteppedOn = 0;
-document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
-document.querySelector('.fixed-div-right').innerHTML = numberOfLives
+//document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
+//document.querySelector('.fixed-div-right').innerHTML = numberOfLives
 
 function fall() {
     $('#sprite-image').attr('id','sprite-image-stationary');
@@ -51,18 +51,18 @@ async function stepOnPanel(destinationPanel) {
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
         numberOfLives = numberOfLives.slice(0,-2)
-        document.getElementById("myImg").src = "images/ouch.jpg";
-        document.querySelector('.fixed-div-right').innerHTML = numberOfLives
+        //document.getElementById("myImg").src = "images/ouch.jpg";
+        //document.querySelector('.fixed-div-right').innerHTML = numberOfLives
         checkWin(getCharacterCoordinates())
         if (numberOfLives === '') {
             document.getElementById("modalBoxContent").innerHTML = 'You lose! Try again!'
             modal.style.display = "block";
         }
-        document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
+        //document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
     } else {
         await sleep(800)
         checkWin(getCharacterCoordinates())
-        document.getElementById("myImg").src = "images/smile.jpg";
+        //document.getElementById("myImg").src = "images/smile.jpg";
         destinationPanel.innerText = destinationPanel.getAttribute('totalbreakableglassaround')
     }
 }
