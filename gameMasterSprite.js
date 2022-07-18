@@ -6,9 +6,8 @@ let positionGamemaster = widthOfGamemasterSprite;
 let iterationsGamemaster = 1;
 let intervalsGamemaster = []
 
-function startAnimationGamemaster() {
+function startAnimationGamemaster(speed) {
 
-    const speed = 50; //in millisecond(ms)
     const diff = widthOfGamemasterSprite; //difference between two sprites
     
     let animationIntervalGamemaster = setInterval(() => {
@@ -61,7 +60,7 @@ mainaudio.volume = 0.5;
 function openingMessage() {
     var audio = new Audio('images/openingMessage.mp3');
     audio.play();
-    startAnimationGamemasterBeginning();
+    startAnimationGamemaster(150);
 }
 
 setTimeout(openingMessage,1500);

@@ -60,7 +60,7 @@ async function stepOnPanel(destinationPanel) {
         await sleep(1000)
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
-        startAnimationGamemaster()
+        startAnimationGamemaster(50)
         playRandomGamemasterMessage()
         numberOfLives = numberOfLives.slice(0,-2)
         if (brokenPanelsSteppedOn < 8) {
