@@ -3,6 +3,9 @@ let characterOnPanelNumber = 0
 document.addEventListener(
     // adds event lister to directional key to move character
     "keydown", e=>{
+    if (e.repeat) {
+        return false
+    }
     switch(e.key) {
         case 'x':
             if (characterOnPanelNumber < 380) {
