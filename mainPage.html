@@ -27,7 +27,7 @@
             </div>
 
             <div id="mySidepanel" class="sidepanel">
-                <a href="javascript:void(0)" class="closebtn" onclick="(function(){
+                <a class="closebtn" style="cursor:pointer" onclick="(function(){
                     document.getElementById('mySidepanel').style.width = '0';
                 })();">&times;</a>
                 <p><b>Game Instructions</b></p>
@@ -37,13 +37,19 @@
                 <p>When the player steps on a broken glass, he/she falls to their death.</p>
                 <p>You have 7 chances to make it across, when all 7 players are dead, you lose.</p>
                 <p>All the best! Their lives are in your hands.</p>
+                <p>(close this box with the 'x' on the top right)</p>
             </div>
             <button class="openbtn" onclick="(function(){
                 let sidepanel = document.getElementById('mySidepanel')
-                sidepanel.style.width = '450px';
+                sidepanel.style.width = '500px';
+                sidepanel.style.height = '680px';
                 sidepanel.style['font-size'] = '25px';
                 sidepanel.style.padding = '5px';
-            })();">&#9776; Instructions</button>
+            })();">&#9776; How to Play</button>
+            <button class="main-page-restart-button" onclick="(function(){
+                window.location.href = 'mainPage.html';
+                return false;
+            })();">Restart</button>
             </br>
 
             <audio controls autoplay>

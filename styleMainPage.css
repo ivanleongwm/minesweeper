@@ -1,5 +1,5 @@
 body {
-    zoom:50%;
+    zoom:55%;
     display: block;
     margin: 0px;
     background-image: url("images/bluetilebackground.png");
@@ -15,8 +15,8 @@ body {
 }
 
 .squidgame-left-panel {
-    height: 1155px;
-    width: 620px;
+    height: 1070px;
+    width: 587px;
     /*border: 1px solid black;*/
     background: url("images/SquidGameLeftPanel.png")
       0px 0px;
@@ -27,6 +27,27 @@ body {
     margin-right:30px;
     transition: top 1.5s ease, left 1.5s ease;
     text-align: bottom;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.main-page-restart-button {
+    color: white;
+    height:50px;
+    margin-left:10px;
+    padding-left:20px;
+    padding-right:20px;
+    font-size:25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: black;
+    cursor:pointer;
+}
+
+.main-page-restart-button:hover {
+    color: white;
+    font-size:30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: black;
+    opacity:50%;
 }
 
 .game-components-container {
@@ -308,13 +329,13 @@ cursor: pointer;
 
 /* The sidepanel menu */
 .sidepanel {
-    height: 650px; /* Specify a height */
+    height: 680px; /* Specify a height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 550px;
+    top: 350px;
     left: 0;
-    background-color: rgb(255, 255, 255); /* Black*/
+    background-color: rgba(255, 196, 176, 0.932); /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
