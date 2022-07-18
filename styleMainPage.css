@@ -76,7 +76,7 @@ body {
 }
 
 #gamemaster-sprite-image {
-    margin-left:50px;
+    margin-left:20px;
     height: 380px;
     width: 540px;
     /*border: 1px solid black;*/
@@ -90,7 +90,7 @@ body {
 }
 
 .results-container {
-    margin-left:60px;
+    margin-left:0px;
 }
 
 .players-container {
@@ -380,3 +380,11 @@ cursor: pointer;
   .openbtn:hover {
     background-color: #444;
   }
+
+.finish-line {
+    writing-mode: vertical-lr;
+    font-size: 45px;
+    opacity:50%;
+    margin-left:7px;
+    color:rgb(170, 3, 31);
+}
