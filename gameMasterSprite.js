@@ -55,6 +55,9 @@ function startGameMasterContinuousAnimation() {
     },50);
 }
 */
+var mainaudio = document.getElementById('main-audio')
+mainaudio.volume = 0.5;
+
 function openingMessage() {
     var audio = new Audio('images/openingMessage.mp3');
     audio.play();

@@ -49,12 +49,19 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function playRandomGamemasterMessage() {
+    let random = Math.round(Math.random()*3)+1
+    var audio = new Audio(`images/dead${random}.mp3`);
+    audio.play();
+}
+
 async function stepOnPanel(destinationPanel) {
     if (destinationPanel.getAttribute('class') === 'breakablePanel') {
         await sleep(1000)
         destinationPanel.className = 'panelbroken'
         brokenPanelsSteppedOn += 1
         startAnimationGamemaster()
+        playRandomGamemasterMessage()
         numberOfLives = numberOfLives.slice(0,-2)
         if (brokenPanelsSteppedOn < 8) {
             document.getElementById("players").src = `images/playersStart${brokenPanelsSteppedOn}.png`;
@@ -74,6 +81,7 @@ async function stepOnPanel(destinationPanel) {
             document.getElementById("modalBoxContent").innerHTML = 'All your players have died. Game Over. ' 
             document.getElementById("modalBoxContent").appendChild(restartbutton)
             modal.style.display = "block";
+            document.addEventListener("keydown",e=>{return false});
         }
         //document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
     } else {
