@@ -96,8 +96,15 @@ function checkWin(i) {
         finalColReached = true;
     }
     if (i !== 0 && (i % 20 === 0) && finalColReached) {
-        document.getElementById("modalBoxContent").innerHTML = 'You Win! Congratulation!'
-        document.getElementById("myModalLose").style.display = "block";
+        let restartbutton = document.createElement('button');
+            restartbutton.innerHTML = 'Play Again?';
+            restartbutton.classList.add('restart-button');
+            restartbutton.addEventListener("click",()=>{
+                window.location.href = 'mainPage.html';
+            });
+            document.getElementById("modalBoxContent").innerHTML = 'You Win! Congratulations :) ' 
+            document.getElementById("modalBoxContent").appendChild(restartbutton)
+            modal.style.display = "block";
         //alert('You Win!')
     }
 }

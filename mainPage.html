@@ -9,9 +9,9 @@
 </head>
 <body>
     <!--
-    <div class="instructions"><br/><b>SQUID GAME MINESWEEPER</b><br/>Use the keyboard "Q,W,E,A,D,Z,X,C" as directional keys to move the man from the left all the way to the right to win.
-    <br/>The numbers that appear on the glass are the number of broken panels surrounding that glass panel.
-    <br/>Each time the man steps on a broken glass, a squid life is lost. When all lives are lost you lose. :)
+    <div class="instructions"><br/><b>SQUID GAME MINESWEEPER</b><br/>
+    <br/>
+    <br/>
     </div>
     -->
     <div class='fixed-div'></div>
@@ -22,9 +22,30 @@
     </div>
     <div class="title"></div>
     <div class="game-components-container">
-        <div>
+        <div class="left-panel">
             <div class="squidgame-left-panel">
             </div>
+
+            <div id="mySidepanel" class="sidepanel">
+                <a href="javascript:void(0)" class="closebtn" onclick="(function(){
+                    document.getElementById('mySidepanel').style.width = '0';
+                })();">&times;</a>
+                <p><b>Game Instructions</b></p>
+                <p>Your objective is to move the player on the top left of the glasspanels all the way to the right.</p>
+                <p>Use the keyboard keys "Q,W,E,A,D,Z,X,C" as directional keys to move the player.</p>
+                <p>A number appears on the glass after you've stepped on it, and it represents the number of broken panels surrounding that glass panel.</p>
+                <p>When the player steps on a broken glass, he/she falls to their death.</p>
+                <p>You have 7 chances to make it across, when all 7 players are dead, you lose.</p>
+                <p>All the best! Their lives are in your hands.</p>
+            </div>
+            <button class="openbtn" onclick="(function(){
+                let sidepanel = document.getElementById('mySidepanel')
+                sidepanel.style.width = '450px';
+                sidepanel.style['font-size'] = '25px';
+                sidepanel.style.padding = '5px';
+            })();">&#9776; Instructions</button>
+            </br>
+
             <audio controls autoplay>
                 <source src="images/pinkSoldiers.mp3" type="audio/mpeg">
               </audio>
@@ -48,7 +69,12 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p id="modalBoxContent">You Lose</p>
+        <p id="modalBoxContent">All your players have died. Game Over.  
+            <button class="restart-button" onclick="(function(){
+                window.location.href = 'mainPage.html';
+                return false;
+            })();">Restart</button>
+        </p>
     </div>
     
     

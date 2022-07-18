@@ -63,7 +63,14 @@ async function stepOnPanel(destinationPanel) {
         audio.play();
         
         if (numberOfLives === '') {
-            document.getElementById("modalBoxContent").innerHTML = 'You lose! Try again!'
+            let restartbutton = document.createElement('button');
+            restartbutton.innerHTML = 'Restart';
+            restartbutton.classList.add('restart-button');
+            restartbutton.addEventListener("click",()=>{
+                window.location.href = 'mainPage.html';
+            });
+            document.getElementById("modalBoxContent").innerHTML = 'All your players have died. Game Over. ' 
+            document.getElementById("modalBoxContent").appendChild(restartbutton)
             modal.style.display = "block";
         }
         //document.querySelector('.fixed-div').innerHTML = `Broken Panels Stepped On: ${brokenPanelsSteppedOn}`
@@ -93,7 +100,7 @@ function checkWin(currentXYCoordinates) {
     console.log("Checking win:",currentXYCoordinates)
     if (currentXYCoordinates[0] > 1174) {
         //alert("you win!")
-        //modal.style.display = "block";
+            
     }
  }
 
@@ -141,4 +148,3 @@ function characterOnPanelNumber() {
 }
 */
 let xWinMinMax = [1174.599998474121, 1230.599998474121]
-
